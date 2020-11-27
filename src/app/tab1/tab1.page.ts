@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { AuthenticationService } from 'src/shared/authentication-service';
+import { SignUpPage } from '../sign-up/sign-up.page';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +11,14 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  constructor(
+    public authService: AuthenticationService,
+    public router: Router,
+  ) {
+  }
+
+  createAccount() {
+    this.router.navigate(['./create-account']);
+  }
 
 }
