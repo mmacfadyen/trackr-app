@@ -11,29 +11,7 @@ import { AppComponent } from '../app.component';
 })
 export class Tab1Page {
   
-  public currentUser: any = null;
-  public previousCurrentUser = null;
-
-  constructor(
-    public authService: AuthenticationService,
-    private app: AppComponent,
-    public router: Router,
-  ) {
-  }
-
-  signout() {
-    this.authService.SignOut().then(() => {
-      this.currentUser = null;
-    });
-  }
-
-  ngAfterContentInit() {
-    this.previousCurrentUser = this.currentUser;
-    this.currentUser = this.app.currentUser;
-
-    if (this.currentUser !== this.previousCurrentUser) {
-      this.previousCurrentUser = this.currentUser;
-    }
+  constructor() {
   }
 
 

@@ -1,17 +1,3 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-    <ion-buttons slot="primary">
-      <ion-button (click)="signout()" fill="solid" color="secondary">
-        Sign Out
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-  
-</ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -21,5 +7,21 @@
 
   
   <!-- if user is NOT signed in, display below container-->
-  <app-explore-container *ngIf="!currentUser" name="Tab 1 page"></app-explore-container>
+  <app-welcome-container *ngIf="!currentUser" name="Tab 1 page"></app-welcome-container>
+  <ion-grid *ngIf="currentUser">
+    <ion-row>
+      <ion-col>
+        col 1
+      </ion-col>
+      <ion-col>
+        col 2
+      </ion-col>
+      <ion-col>
+        col 3
+      </ion-col>
+      <ion-col>
+        col 4
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

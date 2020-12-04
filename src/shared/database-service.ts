@@ -17,7 +17,7 @@ export class FirestoreService {
       .ref.get()
       .then((doc) => {
         if (doc.exists) {
-          console.log("retrieved user: " + doc.id);
+          console.log("retrieved user: " + doc.data());
           return doc.data();
         } else {
           console.log("Could not retrieve user: " + userId);

@@ -1,3 +1,16 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      trackr
+    </ion-title>
+    <ion-buttons *ngIf="currentUser" slot="primary">
+      <ion-button (click)="signout()" fill="solid" color="secondary">
+        sign out
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
 <ion-tabs>
 
   <ion-tab-bar slot="bottom">
