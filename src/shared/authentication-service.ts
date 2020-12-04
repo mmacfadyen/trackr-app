@@ -116,7 +116,7 @@ export class AuthenticationService {
       .signInWithPopup(provider)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(["dashboard"]);
+          this.router.navigate([""]);
         });
         // this.SetUserData(result.user);
       })
@@ -129,7 +129,7 @@ export class AuthenticationService {
   SignOut() {
     return this.ngFireAuth.signOut().then(() => {
       this.createToast("Sign Out Successful").then(async () => {
-        await this.router.navigate(["disaster-dashboard"]);
+        await this.router.navigate([""]);
       });
     });
   }

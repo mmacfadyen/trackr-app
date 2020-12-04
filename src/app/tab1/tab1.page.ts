@@ -21,7 +21,13 @@ export class Tab1Page {
   ) {
   }
 
-  ngAfterViewChecked() {
+  signout() {
+    this.authService.SignOut().then(() => {
+      this.currentUser = null;
+    });
+  }
+
+  ngAfterContentInit() {
     this.previousCurrentUser = this.currentUser;
     this.currentUser = this.app.currentUser;
 

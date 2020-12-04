@@ -3,7 +3,13 @@
     <ion-title>
       Tab 1
     </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="signout()" fill="solid" color="secondary">
+        Sign Out
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
+  
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -15,5 +21,5 @@
 
   
   <!-- if user is NOT signed in, display below container-->
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <app-explore-container *ngIf="!currentUser" name="Tab 1 page"></app-explore-container>
 </ion-content>
