@@ -11,6 +11,14 @@
       <ion-col class="ion-text-center" size="8">
         <br />
         <ion-label class="page-title">Sign Up</ion-label>
+        <ion-item class="name">
+          <ion-input
+            placeholder="Name"
+            type="name"
+            required
+            [(ngModel)]="name"
+          ></ion-input>
+        </ion-item>
         <ion-item class="email">
           <ion-input
             placeholder="Email"

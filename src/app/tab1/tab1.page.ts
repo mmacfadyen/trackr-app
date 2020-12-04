@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AuthenticationService } from 'src/shared/authentication-service';
-import { SignUpPage } from '../sign-up/sign-up.page';
 import { Router } from "@angular/router";
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-tab1',
@@ -10,15 +10,25 @@ import { Router } from "@angular/router";
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  
+  public currentUser: any = null;
+  public previousCurrentUser = null;
 
   constructor(
     public authService: AuthenticationService,
+    private app: AppComponent,
     public router: Router,
   ) {
   }
 
-  createAccount() {
-    this.router.navigate(['./create-account']);
+  ngAfterViewChecked() {
+    this.previousCurrentUser = this.currentUser;
+    this.currentUser = this.app.currentUser;
+
+    if (this.currentUser !== this.previousCurrentUser) {
+      this.previousCurrentUser = this.currentUser;
+    }
   }
+
 
 }

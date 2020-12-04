@@ -27,14 +27,6 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'sign-in',
-    loadChildren: () => import('../sign-in/sign-in.module').then(m => m.SignInPageModule)
-  },
-  {
-    path: 'create-account',
-    loadChildren: () => import('../create-account/create-account.module').then(m => m.CreateAccountPageModule)
-  },
-  {
     path: '',
     redirectTo: '/tabs/tab1',
     pathMatch: 'full'

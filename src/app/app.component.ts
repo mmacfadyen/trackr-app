@@ -12,6 +12,7 @@ import { FirestoreService } from 'src/shared/database-service';
 })
 export class AppComponent {
   public currentUser: any = null;
+  public user: any = null;
 
   constructor(
     private platform: Platform,

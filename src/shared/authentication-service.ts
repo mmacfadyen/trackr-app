@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { NavController, ToastController } from "@ionic/angular";
 import { first } from "rxjs/operators";
+import firebase from 'firebase';
 
 @Injectable({
   providedIn: "root",
@@ -30,6 +31,12 @@ export class AuthenticationService {
       });
   }
 
+  getCurrentUser() {
+    // return firebase.auth().currentUser;
+    console.log(this.ngFireAuth.currentUser);
+    return this.ngFireAuth.currentUser;
+  }
+
   async createToast(message: string) {
     const toast = await this.toastCtrl.create({
       message: message,
@@ -48,14 +55,14 @@ export class AuthenticationService {
     return this.ngFireAuth.createUserWithEmailAndPassword(email, password);
   }
 
-  // Email verification when new user register
+  // Email verification when new user registers
   SendVerificationMail() {
     return this.ngFireAuth.currentUser
       .then((user) => {
         user.sendEmailVerification();
       })
       .then(() => {
-        this.router.navigate(["tabs"]);
+        this.router.navigate(["verify-email"]);
       });
   }
 

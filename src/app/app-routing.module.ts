@@ -14,6 +14,13 @@ const routes: Routes = [
     path: 'sign-in',
     loadChildren: () => import('./sign-in/sign-in.module').then( m => m.SignInPageModule)
   },
+  {
+    path: "verify-email",
+    loadChildren: () =>
+      import("./verify-email/verify-email.module").then(
+        (m) => m.VerifyEmailPageModule
+      ),
+  },
 ];
 @NgModule({
   imports: [
