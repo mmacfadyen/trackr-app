@@ -32,8 +32,6 @@ export class AuthenticationService {
   }
 
   getCurrentUser() {
-    // return firebase.auth().currentUser;
-    console.log(this.ngFireAuth.currentUser);
     return this.ngFireAuth.currentUser;
   }
 

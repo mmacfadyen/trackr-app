@@ -1,9 +1,36 @@
-<ion-content [fullscreen]="true">
+<ion-content class="content" [fullscreen]="false">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <ion-title size="large" class="title">settings</ion-title>
+      <ion-buttons *ngIf="currentUser" slot="primary">
+        <ion-button (click)="signout()" class="signout-button">
+          sign out
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
 
   <app-welcome-container *ngIf="!currentUser" name="Tab 3 page"></app-welcome-container>
+  <ion-list *ngIf="currentUser">
+    <ion-item>
+      <ion-label>change name</ion-label>
+      <ion-input class="ion-text-right"
+      placeholder="new name"
+      required
+      [(ngModel)]="newName"
+    ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>delete account</ion-label>
+      <ion-input class="ion-text-right"
+      placeholder="type password to delete"
+      type="password"
+      required
+      [(ngModel)]="password"
+    ></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-button *ngIf="currentUser" (click)="save()" class="save-button" expand="full">
+    save
+  </ion-button>
 </ion-content>

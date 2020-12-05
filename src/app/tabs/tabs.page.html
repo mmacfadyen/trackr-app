@@ -3,11 +3,6 @@
     <ion-title>
       trackr
     </ion-title>
-    <ion-buttons *ngIf="currentUser" slot="primary">
-      <ion-button (click)="signout()" fill="solid" color="secondary">
-        sign out
-      </ion-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -16,7 +11,7 @@
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="tab1">
       <ion-icon name="triangle"></ion-icon>
-      <ion-label>Tab 1</ion-label>
+      <ion-label>home</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="tab2">
@@ -24,9 +19,9 @@
       <ion-label>Tab 2</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="tab3">
+    <ion-tab-button tab="settings">
       <ion-icon name="square"></ion-icon>
-      <ion-label>Tab 3</ion-label>
+      <ion-label>settings</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 

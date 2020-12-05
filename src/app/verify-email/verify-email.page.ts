@@ -14,14 +14,17 @@ export class VerifyEmailPage implements OnInit {
 
   public userEmail: string;
   name: string = "";
-  test: string = "hello bitch";
 
   constructor(
     private authService: AuthenticationService,
     private fsService: FirestoreService,
     private toastCtrl: ToastController,
     private router: Router) {
-      console.log("tried to load page");
+      this.authService.getUser().then((user) => {
+        if (user) {
+          this.userEmail = user.email;
+        }
+      });
   }
 
   async createToast(message: string) {
@@ -35,6 +38,7 @@ export class VerifyEmailPage implements OnInit {
   getUserData() {
     this.authService.getUser().then((user) => {
       if (user) {
+        this.userEmail = user.email;
         let userData: dbUserObj = {
           email: user.email,
           uid: user.uid,

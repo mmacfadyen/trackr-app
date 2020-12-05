@@ -4,14 +4,13 @@
       <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
   </ion-header>
-
   
   <!-- if user is NOT signed in, display below container-->
   <app-welcome-container *ngIf="!currentUser" name="Tab 1 page"></app-welcome-container>
-  <ion-grid *ngIf="currentUser">
+  <ion-grid id="grid" *ngIf="currentUser">
     <ion-row>
       <ion-col>
-        col 1
+        {{ currentUser.name }}
       </ion-col>
       <ion-col>
         col 2

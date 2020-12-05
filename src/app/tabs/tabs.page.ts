@@ -24,16 +24,9 @@ export class TabsPage {
   ) {
   }
 
-  signout() {
-    this.authService.SignOut().then(() => {
-      this.currentUser = null;
-    });
-  }
-
   ngAfterContentChecked() {
     this.previousCurrentUser = this.currentUser;
     this.currentUser = this.app.currentUser;
-    console.log(this.currentUser);
     if (this.currentUser !== this.previousCurrentUser) {
       this.previousCurrentUser = this.currentUser;
     }
