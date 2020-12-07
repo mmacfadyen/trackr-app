@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>create-instance</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>what were you doing?</ion-label>
+          <ion-input [(ngModel)]="doing"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>how were you feeling?</ion-label>
+          <ion-input [(ngModel)]="feeling"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-around">
+      <ion-col size="auto">
+        <ion-button class="button" (click)="cancel()">cancel</ion-button>
+      </ion-col>
+      <ion-col text-center size="auto">
+        <ion-button class="button" (click)="create()">create</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

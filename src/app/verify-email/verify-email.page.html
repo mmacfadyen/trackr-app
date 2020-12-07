@@ -1,10 +1,9 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>trackr</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content class="body">
+<ion-content class="content" >
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">welcome to trackr</ion-title>
+    </ion-toolbar>
+  </ion-header>
   <ion-item class="name">
     <ion-input class="name-input"
       placeholder="enter your name"
@@ -25,7 +24,7 @@
 </ion-content>
 
 <ion-footer class="continue ion-no-border">
-  <ion-button class="button" id="continue-button" (click)="getUserData()"
+  <ion-button class="button" (click)="getUserData()"
     >Continue</ion-button
   >
 </ion-footer>

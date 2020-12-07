@@ -14,7 +14,6 @@ export class Tab3Page {
   public currentUser: any = null;
   public newName: any = "";
   public updatedUser: dbUserObj = null;
-  private password: any = "";
 
   constructor(
     public tabsPage: TabsPage,
@@ -35,15 +34,11 @@ export class Tab3Page {
       this.updatedUser.name = this.newName;
       this.fsService.updateUser(this.updatedUser);
     }
-    if(this.password !== null && this.password !== "") {
-      this.fsService.deleteUser(this.currentUser.uid);
-    }
   }
 
-  // deleteAccount() {
-  //   this.updatedUser = this.currentUser;
-  //   this.fsService.deleteUser(this.updatedUser);
-  // }
+  deleteAccount() {
+    this.fsService.deleteUser(this.currentUser.uid);
+  }
 
   ngAfterContentChecked() {
     this.currentUser = this.tabsPage.currentUser;

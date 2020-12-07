@@ -21,6 +21,10 @@ const routes: Routes = [
         (m) => m.VerifyEmailPageModule
       ),
   },
+  {
+    path: 'create-instance',
+    loadChildren: () => import('./create-instance/create-instance.module').then( m => m.CreateInstancePageModule)
+  },
 ];
 @NgModule({
   imports: [
