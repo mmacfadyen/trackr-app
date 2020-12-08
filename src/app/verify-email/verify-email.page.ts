@@ -44,7 +44,6 @@ export class VerifyEmailPage implements OnInit {
           uid: user.uid,
           name: this.name
         }
-        console.log("userdata email: " + userData.email);
         this.createUser(userData);
       }
     });

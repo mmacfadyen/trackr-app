@@ -15,13 +15,12 @@ export class WelcomeContainerComponent implements OnInit {
 
   ngOnInit() {}
 
-  ngAfterContentChecked() {
-    this.previousCurrentUser = this.currentUser;
-    this.currentUser = this.app.currentUser;
-    console.log(this.currentUser);
-    if (this.currentUser !== this.previousCurrentUser) {
-      this.previousCurrentUser = this.currentUser;
-    }
-  }
+  // ngAfterContentChecked() {
+  //   this.previousCurrentUser = this.currentUser;
+  //   this.currentUser = this.app.currentUser;
+  //   if (this.currentUser !== this.previousCurrentUser) {
+  //     this.previousCurrentUser = this.currentUser;
+  //   }
+  // }
 
 }

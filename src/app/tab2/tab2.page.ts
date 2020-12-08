@@ -17,7 +17,6 @@ export class Tab2Page {
 
   ngAfterContentChecked() {
     this.currentUser = this.tabsPage.currentUser;
-    console.log(this.currentUser);
   }
 
 }

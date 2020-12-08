@@ -22,6 +22,10 @@ export class Tab3Page {
   ) {
   }
 
+  ngAfterContentChecked() {
+    this.currentUser = this.tabsPage.currentUser;
+  }
+
   signout() {
     this.authService.SignOut().then(() => {
       this.currentUser = null;
@@ -38,11 +42,6 @@ export class Tab3Page {
 
   deleteAccount() {
     this.fsService.deleteUser(this.currentUser.uid);
-  }
-
-  ngAfterContentChecked() {
-    this.currentUser = this.tabsPage.currentUser;
-    console.log(this.currentUser);
   }
 
 }

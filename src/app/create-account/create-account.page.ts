@@ -67,7 +67,6 @@ export class CreateAccountPage implements OnInit {
         .RegisterUser(userData.email, userData.password)
         .then((result) => {
           if (result.user) {
-            console.log("calling authservice");
             this.authService.SendVerificationMail();
           }
         })

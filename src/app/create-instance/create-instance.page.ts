@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, PopoverController } from '@ionic/angular';
 
 @Component({
   selector: 'app-create-instance',
@@ -12,12 +12,13 @@ export class CreateInstancePage implements OnInit {
 
   constructor(
     public modalCtrl: ModalController,
+    public popoverCtrl: PopoverController,
   ) { }
 
   create() {
     // using the injected ModalController this page
     // can "dismiss" itself and optionally pass back data
-    this.modalCtrl.dismiss({
+    this.popoverCtrl.dismiss({
       'dismissed': true,
       'doing': this.doing,
       'feeling' : this.feeling,
@@ -25,7 +26,7 @@ export class CreateInstancePage implements OnInit {
   }
 
   cancel() {
-    this.modalCtrl.dismiss({
+    this.popoverCtrl.dismiss({
       'dismissed': true
     })
   }
