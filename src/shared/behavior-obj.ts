@@ -5,7 +5,7 @@ export interface dbBehaviorObj {
 
 export interface dbInstanceObj {
     uid: string;
-    doing: string;
-    feeling: string;
+    doing?: string;
+    feeling?: string;
     time: string;
 }

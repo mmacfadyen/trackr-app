@@ -33,7 +33,9 @@ export class TabsPage {
 
   async retrieveBehaviors() {
     if(this.currentUser) {
-      this.behaviors = this.fsService.getBehaviors(this.currentUser.uid);
+      this.fsService.getLiveBehaviors(this.currentUser.uid).subscribe((data) => {
+        this.behaviors = data.length ? data : [data];
+      });
     }
   }
 

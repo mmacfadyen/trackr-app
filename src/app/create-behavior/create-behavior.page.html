@@ -1,0 +1,17 @@
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">behavior</ion-label>
+          <ion-input [(ngModel)]="name"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-around">
+      <ion-col text-center size="auto">
+        <ion-button class="button" (click)="create()">create</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

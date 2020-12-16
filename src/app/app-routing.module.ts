@@ -25,6 +25,10 @@ const routes: Routes = [
     path: 'create-instance',
     loadChildren: () => import('./create-instance/create-instance.module').then( m => m.CreateInstancePageModule)
   },
+  {
+    path: 'create-behavior',
+    loadChildren: () => import('./create-behavior/create-behavior.module').then( m => m.CreateBehaviorPageModule)
+  },
 ];
 @NgModule({
   imports: [

@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { dbBehaviorObj, dbInstanceObj } from './behavior-obj';
 import { dbUserObj } from "./user-obj";
+import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",
@@ -41,26 +42,6 @@ export class FirestoreService {
     return this.afStore.collection("users").doc(userId).delete();
   }
 
-  getBehavior(userId: string, behaviorId: string) {
-    return this.afStore
-      .collection("users")
-      .doc(userId)
-      .collection("behaviors")
-      .doc(behaviorId)
-      .ref.get()
-      .then((doc) => {
-        if (doc.exists) {
-          console.log("retrieved behavior: " + doc.data());
-          return doc.data();
-        } else {
-          console.log("Could not retrieve behavior: " + userId);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
   getBehaviors(userId: string) {
     let behaviors = [];
     this.afStore
@@ -76,9 +57,29 @@ export class FirestoreService {
     return behaviors;
   }
 
+  getLiveBehaviors(userId: string) {
+    return this.afStore
+    .collection("users").doc(userId)
+      .collection("behaviors")
+      .snapshotChanges()
+      .pipe(
+        map((changes) =>
+          changes.map((c) => ({
+            id: c.payload.doc.id,
+            ...(c.payload.doc.data() as dbBehaviorObj),
+          }))
+        )
+      );
+  }
+
   createBehavior(userId: string, behavior: dbBehaviorObj) {
     return this.afStore.collection("users").doc(userId)
       .collection("behaviors").doc(behavior.uid).set(behavior);
+  }
+
+  deleteBehavior(userId: string, behaviorId: string) {
+    return this.afStore.collection("users").doc(userId)
+      .collection("behaviors").doc(behaviorId).delete();
   }
 
   getInstances(userId: string, behaviorId: string) {
