@@ -15,6 +15,8 @@ import { CreateBehaviorPage } from '../create-behavior/create-behavior.page';
 export class Tab1Page {
   public currentUser: any = null;
   public behaviors = [];
+  public colors = ["wildblue","babyblue", "purpureus", "purplemountain"];
+  public num = 4;
 
   constructor(
     public tabsPage: TabsPage,
@@ -66,6 +68,7 @@ export class Tab1Page {
     return await popover.present();
   }
 
+  //Creates new instance of behavior
   createInstance(ev: any) {
     let currentDate = new Date();
     let minutes = currentDate.getMinutes().toString();
@@ -96,11 +99,16 @@ export class Tab1Page {
             });
   }
 
-  deleteBehavior(behaviorId: string) {
+  deleteBehavior(ev:any) {
+    let behaviorId = ev.target.id;
     this.fsService.deleteBehavior(this.currentUser.uid, behaviorId);
   }
 
-  //Creates new instance of behavior
+  getColor(i: any) {
+    return this.colors[i];
+  }
+
+  //Creates new instance of behavior with feeling and doing properties
   // async presentInstancePopover(ev: any) {
   //   const popover = await this.popoverCtrl.create({
   //     component: CreateInstancePage,
