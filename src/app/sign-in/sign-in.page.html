@@ -4,36 +4,32 @@
       <ion-title size="large">sign in</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-grid>
-    <ion-row>
-      <ion-col size="2"></ion-col>
-      <ion-col class="ion-text-center" size="8">
-        <ion-item class="email">
-          <ion-input
-            placeholder="Email"
-            type="email"
-            required
-            [(ngModel)]="email"
-          ></ion-input>
-        </ion-item>
-        <ion-item class="password">
-          <ion-input
-            placeholder="Password"
-            type="password"
-            required
-            [(ngModel)]="password"
-          ></ion-input>
-        </ion-item>
-        <ion-button class="submit" (click)="signin()" [disabled]="!validForm"
-          >Sign In</ion-button
-        >
-        <br />
-        <ion-row style="height: 25px"></ion-row>
-        <p><a href="./create-account">Sign Up</a></p>
-        <br />
-        <ion-row style="height: 25px"></ion-row>
-      </ion-col>
-      <ion-col size="2"></ion-col>
-    </ion-row>
-  </ion-grid>
+  <br />
+
+  <ion-item>
+    <ion-label>email</ion-label>
+    <ion-input class="ion-text-right"
+      placeholder="email"
+      required
+      [(ngModel)]="email"
+    ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>password</ion-label>
+    <ion-input class="ion-text-right"
+      placeholder="password"
+      type="password"
+      required
+      [(ngModel)]="password"
+    ></ion-input>
+  </ion-item>
+
+  <ion-button (click)="signin()" expand="full" [disabled]="!validForm">
+    sign in
+  </ion-button>
+  <ion-button (click)="signup()" expand="full">
+    sign up
+  </ion-button>
+
+
 </ion-content>

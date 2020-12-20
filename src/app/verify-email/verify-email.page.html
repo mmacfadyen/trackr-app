@@ -4,8 +4,12 @@
       <ion-title size="large">welcome to trackr</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-item class="name">
-    <ion-input class="name-input"
+
+  <br />
+
+  <ion-item>
+    <ion-label>name</ion-label>
+    <ion-input class="ion-text-right"
       placeholder="enter your name"
       required
       [(ngModel)]="name"
@@ -13,18 +17,19 @@
   </ion-item>
   <br />
 
-  <ion-label class="page-subtitle">An email has been sent to </ion-label
+  <ion-label class="page-subtitle">an email has been sent to </ion-label
   ><ion-label class="page-subtitle" style="font-weight: bold"
     >{{ userEmail }}</ion-label
   ><br />
   <ion-label class="page-subtitle"
-    >To finish setting up your account, simply click the link in the email
-    to confirm your email address.</ion-label
+    >to finish setting up your account, click the link in the email
+    to confirm your email address</ion-label
   >
+
+  <ion-button (click)="getUserData()" expand="full">
+    continue
+  </ion-button>
 </ion-content>
 
 <ion-footer class="continue ion-no-border">
-  <ion-button class="button" (click)="getUserData()"
-    >Continue</ion-button
-  >
 </ion-footer>

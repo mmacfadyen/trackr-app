@@ -125,10 +125,6 @@ export class AuthenticationService {
 
   // Sign-out
   SignOut() {
-    return this.ngFireAuth.signOut().then(() => {
-      this.createToast("Sign Out Successful").then(async () => {
-        await this.router.navigate([""]);
-      });
-    });
+    return this.ngFireAuth.signOut();
   }
 }

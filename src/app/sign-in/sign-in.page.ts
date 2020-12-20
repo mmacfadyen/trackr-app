@@ -15,19 +15,19 @@ export class SignInPage implements OnInit {
   password: string = "";
   validForm: boolean = false;
 
-  ngAfterContentChecked() {
-    if (this.email && this.password) {
-      return (this.validForm = true);
-    }
-    this.validForm = false;
-  }
-
   constructor(
     public toastCtrl: ToastController,
     public router: Router,
     private authService: AuthenticationService,
     private app: AppComponent
   ) {}
+
+  ngAfterContentChecked() {
+    if (this.email && this.password) {
+      return (this.validForm = true);
+    }
+    this.validForm = false;
+  }
 
   async createToast(message: string) {
     const toast = await this.toastCtrl.create({
@@ -61,6 +61,10 @@ export class SignInPage implements OnInit {
     } else {
       await this.createToast("Sign In Failed");
     }
+  }
+
+  signup() {
+    this.router.navigate(["/create-account"]);
   }
 
   ngOnInit() {

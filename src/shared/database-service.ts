@@ -3,6 +3,8 @@ import { AngularFirestore } from "@angular/fire/firestore";
 import { dbBehaviorObj, dbInstanceObj } from './behavior-obj';
 import { dbUserObj } from "./user-obj";
 import { map } from "rxjs/operators";
+import { AuthenticationService } from "./authentication-service";
+import { AngularFireAuth } from "@angular/fire/auth";
 
 @Injectable({
   providedIn: "root",

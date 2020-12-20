@@ -23,7 +23,6 @@ import { v4 as uuidv4 } from "uuid";
   styleUrls: ['./create-account.page.scss'],
 })
 export class CreateAccountPage implements OnInit {
-  name: string = "";
   email: string = "";
   password: string = "";
   confirmPassword: string = "";
@@ -78,7 +77,9 @@ export class CreateAccountPage implements OnInit {
     }
   }
 
-  
+  signin() {
+    this.router.navigate(['/sign-in']);
+  }
 
   ngOnInit() {
   }

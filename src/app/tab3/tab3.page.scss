@@ -1,21 +1,7 @@
-#grid {
-    text-align: center;
-  
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-.signout-button {
-  --padding-end: 15px;
-}
-
-.save-button {
+.button {
   margin: 10% 20px;
 }
 
-.content {
-  --padding-top: 10%;
+ion-item {
+  --padding-end: 20px;
 }
