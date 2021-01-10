@@ -6,4 +6,33 @@
   </ion-header>
 
   <app-welcome-container *ngIf="!currentUser" name="Tab 2 page"></app-welcome-container>
+
+  <div *ngIf="currentUser" class="chart-wrapper">
+    <canvas baseChart 
+    [datasets]="barChartData"
+    [labels]="barChartLabels"
+    [options]="barChartOptions"
+    [plugins]="barChartPlugins"
+    [legend]="barChartLegend"
+    [chartType]="barChartType">
+  </canvas>
+
+  <ion-segment (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="all">
+      <ion-label>all time</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="month">
+      <ion-label>month</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="week">
+      <ion-label>week</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="day">
+      <ion-label>day</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+</div>
+
+
 </ion-content>

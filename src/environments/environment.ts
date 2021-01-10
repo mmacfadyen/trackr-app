@@ -11,8 +11,7 @@ export const environment = {
     projectId: "trackr-62edc",
     storageBucket: "trackr-62edc.appspot.com",
     messagingSenderId: "329133984967",
-    appId: "1:329133984967:web:bd65c45683865053ac82e2",
-    measurementId: "G-8KH4P6G6DK"
+    appId: "1:329133984967:web:bd65c45683865053ac82e2"  
   },
 };
 

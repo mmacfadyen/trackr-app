@@ -6,6 +6,8 @@ import { v4 as uuidv4 } from "uuid";
 import { dbBehaviorObj, dbInstanceObj } from 'src/shared/behavior-obj';
 import { FirestoreService } from 'src/shared/database-service';
 import { CreateBehaviorPage } from '../create-behavior/create-behavior.page';
+import { stringify } from '@angular/compiler/src/util';
+// import { Tab2Page } from '../tab2/tab2.page';
 
 @Component({
   selector: 'app-tab1',
@@ -70,28 +72,17 @@ export class Tab1Page {
 
   //Creates new instance of behavior
   createInstance(ev: any) {
-    let currentDate = new Date();
-    let minutes = currentDate.getMinutes().toString();
-    if (minutes.length == 1) {
-      minutes = "0" + minutes;
-    }
 
-    console.log(ev.target.id);
+    //Formatting the date!
+    let currentDate = new Date();
+
+    var dateNum = this.tabsPage.getDateNum(currentDate);
+    console.log(dateNum);
+
     let behaviorId = ev.target.id;
     let instance: dbInstanceObj = {
       uid: uuidv4(),
-      time: (
-        currentDate.getMonth() +
-        1 +
-        "/" +
-        currentDate.getDate() +
-        "/" +
-        currentDate.getFullYear() +
-        " at " +
-        currentDate.getHours() +
-        ":" +
-        minutes
-      ).toString()
+      time: dateNum,
     }
     this.fsService.createInstance(this.currentUser.uid, behaviorId, instance)
             .catch((err) => {
@@ -153,4 +144,6 @@ export class Tab1Page {
   //     })
   //   return await popover.present();
   // }
+
+
 }

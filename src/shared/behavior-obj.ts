@@ -7,5 +7,5 @@ export interface dbInstanceObj {
     uid: string;
     doing?: string;
     feeling?: string;
-    time: string;
+    time: Number;
 }

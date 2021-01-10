@@ -62,7 +62,7 @@ export class FirestoreService {
   getLiveBehaviors(userId: string) {
     return this.afStore
     .collection("users").doc(userId)
-      .collection("behaviors")
+      .collection("behaviors", (ref) => ref.orderBy("uid", "desc"))
       .snapshotChanges()
       .pipe(
         map((changes) =>
@@ -84,18 +84,40 @@ export class FirestoreService {
       .collection("behaviors").doc(behaviorId).delete();
   }
 
-  getInstances(userId: string, behaviorId: string) {
-    let instances = [];
-    this.afStore
+  async getAllInstances(userId: string, behaviorId: string) {
+    return (await this.afStore
       .collection("users").doc(userId)
       .collection("behaviors").doc(behaviorId)
       .collection("instances")
-      .ref.get()
-      .then((instanceCollection) => {
-        instanceCollection.forEach((instance) => {
-          instances.push(instance.data());
-        })
-      })
+      .ref.get())
+      .docs.map(doc => doc.data());
+  }
+
+  //Returns instances made after given date
+  async getInstancesInSpan(userId: string, behaviorId: string, timespan: Number) {
+    return (await this.afStore
+      .collection("users").doc(userId)
+      .collection("behaviors").doc(behaviorId)
+      .collection("instances")
+      .ref.where("time", ">=", timespan)
+      .get())
+      .docs.map(doc => doc.data());
+  }
+
+  getLiveInstances(userId: string, behaviorId: string) {
+    return this.afStore
+    .collection("users").doc(userId)
+      .collection("behaviors").doc(behaviorId)
+      .collection("instances", (ref) => ref.orderBy("time", "desc"))
+      .snapshotChanges()
+      .pipe(
+        map((changes) =>
+          changes.map((c) => ({
+            id: c.payload.doc.id,
+            ...(c.payload.doc.data() as dbInstanceObj),
+          }))
+        )
+      );
   }
 
   createInstance(userId: string, behaviorId: string, instance: dbInstanceObj) {
